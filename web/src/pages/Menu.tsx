@@ -15,7 +15,7 @@ interface Contact {
 
 function Menu() {
   const history = useHistory();
-  const { goBack } = useHistory();
+  // const { goBack } = useHistory();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -140,42 +140,44 @@ function Menu() {
         }}
       // shouldCloseOnOverlayClick={false}
       >
-        <header className="modal-header-newcontact">
-          <span></span>
-          <h2>Adicionar Novo Contato</h2>
-          <div>
-            <button onClick={() => setModalIsOpen(false)}>
-              <FiX size={24} color="#fff" />
-            </button>
-          </div>
-        </header>
-        <main>
-          <form className="create-account-form">
-            <fieldset>
-              <legend>Inserir as Informações</legend>
+        <div className="container">
+          <header className="modal-header-newcontact">
+            <span></span>
+            <h2>Adicionar Novo Contato</h2>
+            <div>
+              <button onClick={() => setModalIsOpen(false)}>
+                <FiX size={24} color="#fff" />
+              </button>
+            </div>
+          </header>
+          <main>
+            <form className="create-account-form">
+              <fieldset>
+                <legend>Inserir as Informações</legend>
 
-              <div className="input-block">
-                <label htmlFor="name">Nome</label>
-                <input
-                  id="name"
-                  value={contact}
-                  onChange={event => setContact(event.target.value)}
-                  placeholder="Informe o Apelido do Contato"
-                />
-              </div>
-              <div className="input-block">
-                <label htmlFor="number">Número</label>
-                <input
-                  id="number"
-                  value={number}
-                  onChange={event => setNumber(event.target.value)}
-                  placeholder="55XX9XXXXXXXX"
-                />
-              </div>
-            </fieldset>
-            <button className="confirm-button" type="submit" onClick={handleAdd}>Criar</button>
-          </form>
-        </main>
+                <div className="input-block">
+                  <label htmlFor="name">Nome</label>
+                  <input
+                    id="name"
+                    value={contact}
+                    onChange={event => setContact(event.target.value)}
+                    placeholder="Informe o Apelido do Contato"
+                  />
+                </div>
+                <div className="input-block">
+                  <label htmlFor="number">Número</label>
+                  <input
+                    id="number"
+                    value={number}
+                    onChange={event => setNumber(event.target.value)}
+                    placeholder="55XX9XXXXXXXX"
+                  />
+                </div>
+              </fieldset>
+              <button className="confirm-button" type="submit" onClick={handleAdd}>Criar</button>
+            </form>
+          </main>
+        </div>
       </Modal>
     </>
   );

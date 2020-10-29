@@ -32,3 +32,13 @@
 .logon-container section.form form input {
   margin: 4px 0;
 }
+
+@media(max-width: 652px) {
+  .logon-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .logon-container img {
+    margin-bottom: 40px;
+  }
+}

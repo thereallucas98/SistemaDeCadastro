@@ -4,7 +4,7 @@ import { FiLogIn } from 'react-icons/fi';
 
 import LogoMq from '../assets/images/logo.png';
 import '../assets/styles/pages/logon.css';
-import api from '../services/api';
+// import api from '../services/api';
 
 function Logon() {
   const history = useHistory();
@@ -18,7 +18,7 @@ function Logon() {
       email, 
       password
     }
-    alert(`${email} - ${password}`)
+    console.log(`${data.email} - ${data.password}`)
     history.push('/menu');
   }
 
