@@ -1,0 +1,91 @@
+.menu-container {
+  display: flex;
+} 
+
+.menu-container main {
+  flex: 1;
+}
+
+table.table-contact {
+  width: 980px;
+  margin: 64px auto;
+
+  overflow: hidden;
+}
+
+th {
+  border: 1px solid var(--color-primary);
+}
+.onOver {
+  transition: background-color 0.8s;
+
+}
+
+.onOver:hover {
+  background: var(--color-secundary-out);
+}
+
+th, td {
+  width: auto;
+  height: 40px;
+  padding: 10px;
+}
+
+table.table-contact .button-options {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+table.table-contact .button-options button {
+  border: 0;
+  background: none;
+}
+
+.app-sidebar-menu {
+  position: fixed;
+  height: 100%;
+  padding: 32px 24px;
+  background: linear-gradient(329.54deg, var(--color-secundary-out) 0%, var(--color-secundary-out) 100%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.app-sidebar-menu footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-sidebar-menu footer button {
+  margin: 0 0 20px 0;
+}
+
+.app-sidebar-menu footer a,
+.app-sidebar-menu footer button {
+  width: 48px;
+  height: 48px;
+
+  border: 0;
+
+  background: var(--color-secundary-out);
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-sidebar-menu footer a:hover,
+.app-sidebar-menu footer button:hover,
+.modal-header-newcontact button:hover {
+  background: var(--color-secundary-out-dark);
+}
+

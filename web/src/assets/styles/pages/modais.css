@@ -1,0 +1,29 @@
+/* MODAIS */
+.modal-header-newcontact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.modal-header-newcontact h2 {
+  text-align: center;
+}
+
+.modal-header-newcontact button {
+  width: 48px;
+  height: 48px;
+
+  border: 0;
+
+  background: var(--color-secundary-out);
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
