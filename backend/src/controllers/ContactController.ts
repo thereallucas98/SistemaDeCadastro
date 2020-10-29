@@ -6,9 +6,7 @@ import Contact from '../models/Contact';
 
 export default {
   async index(request: Request, response: Response) {
-    console.log('Chamei a função!');
     const contactsRepository = getRepository(Contact);
-    
 
     const contact = await contactsRepository.find();
     console.log(contact)
@@ -41,7 +39,7 @@ export default {
   async delete(request: Request, response: Response) {
     const { id } = request.params;
     
-    const updateData = getRepository(Contact).delete(id);
+    const updateData = await getRepository(Contact).delete(id);
 
     return response.status(200).json({ message: 'Ok' });
 

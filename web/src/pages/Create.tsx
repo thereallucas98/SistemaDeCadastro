@@ -46,6 +46,7 @@ function CreateAccount() {
               id="name"
               value={name}
               onChange={event => setName(event.target.value)}
+              placeholder="Informe o seu Nome"
               />
             </div>
             <div className="input-block">
@@ -54,6 +55,7 @@ function CreateAccount() {
               id="email"
               value={email}
               onChange={event => setEmail(event.target.value)}
+              placeholder="Informe um E-mail válido"
               />
             </div>
             <div className="input-block">
@@ -62,6 +64,7 @@ function CreateAccount() {
               id="password"
               value={password}
               onChange={event => setPassword(event.target.value)}
+              placeholder="Informe a sua Senha"
               />
             </div>
             <div className="input-block">
@@ -70,6 +73,7 @@ function CreateAccount() {
               id="number"
               value={number}
               onChange={event => setNumber(event.target.value)}
+              placeholder="55XX9XXXXXXXX"
               />
             </div>
           </fieldset>

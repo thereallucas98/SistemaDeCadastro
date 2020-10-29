@@ -19,9 +19,9 @@ routes.get('/users/:id', UserController.show);
 routes.delete('/users/:id', UserController.delete);
 
 // Rotas de Cadastro
-routes.post('/create-contact', ContactController.create);
+routes.post('/create', ContactController.create);
 routes.get('/list', ContactController.index);
-routes.delete('delete-contact', ContactController.delete);
+routes.delete('/remove/:id', ContactController.delete);
 
 
 export default routes;

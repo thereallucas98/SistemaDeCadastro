@@ -19,13 +19,13 @@ function Menu() {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  
-  const [name, setName] = useState('');
+
+  const [contact, setContact] = useState('');
   const [number, setNumber] = useState('');
-  
+
   const [contacts, setContacts] = useState<Contact[]>([]);
 
-  useEffect(()=> {
+  useEffect(() => {
     api.get('/list').then(response => {
       setContacts(response.data);
     });
@@ -35,17 +35,32 @@ function Menu() {
     event.preventDefault();
 
     const data = {
-      name,
+      contact,
       number
     }
     console.log(data);
 
-    await api.post('create-contact', data);
+    await api.post('/create', data);
 
-    alert('Conta criada! Realize seu Login!')
+    alert('Contato criado!')
 
-    history.push('/menu');
+    setModalIsOpen(false);
+    setContact('');
+    setNumber('');
+    history.push('/menu')
 
+  }
+
+  async function handleDeleteContact(id: number) {
+    try {
+      await api.delete(`remove/${id}`);
+
+      setContacts(contacts.filter(contact => contact.id !== id));
+
+      alert('Contato removido com sucesso!');
+    } catch (err) {
+      alert('Erro ao deletar contato, tente novamente.');
+    }
   }
 
   return (
@@ -53,7 +68,7 @@ function Menu() {
       <div className="menu-container">
         <div className="app-sidebar-menu">
           <footer>
-            <button type="button" onClick={goBack}>
+            <button type="button" onClick={() => history.push('/')}>
               <FiArrowLeft size={24} color="#fff" />
             </button>
             <button type="button" >
@@ -68,35 +83,38 @@ function Menu() {
         <main>
           <table className="table-contact">
             <tr>
-              <th>Código</th>
+              {/* <th>Código</th> */}
               <th>Nome</th>
               <th>Número do Telefone</th>
               <th>Opções</th>
             </tr>
             {contacts.map(contact => (
               <tr className="onOver" key={contact.id}>
-              <td>{contact.id}#</td>
-              <td>{contact.contact}</td>
-              <td>{contact.number}</td>
-              <td className="button-options">
-                <button type="button" onClick={() => { }}>
-                  <FiPhoneCall size={24} color="#fff" />
-                </button>
-                <button type="button">
-                  <FiEdit size={24} color="#fff" />
-                </button>
-                <button type="button" onClick={() => { }}>
-                  <FiDelete size={24} color="#fff" />
-                </button>
-              </td>
-            </tr>
+                {/* <td>{contact.id}#</td> */}
+                <td>{contact.contact}</td>
+                <td>{contact.number}</td>
+                <td className="button-options">
+                  <button title="Falar pelo WhatsApp">
+                    <a target="_blank" href={`https://wa.me/${contact.number}`}>
+                      <FiPhoneCall size={24} color="#fff" />
+                    </a>
+                  </button>
+                  <button type="button" title="Editar Contato">
+                    <FiEdit size={24} color="#fff" />
+                  </button>
+                  <button type="button" onClick={() => handleDeleteContact(contact.id)} title="Apagar Contato">
+                    <FiDelete size={24} color="#fff" />
+                  </button>
+                </td>
+              </tr>
             ))}
           </table>
         </main>
       </div>
+      {/* MODAIS */}
 
+      {/* MODAL DE CRIAR NOVO CONTATO */}
       <Modal
-
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         style={{
@@ -140,8 +158,9 @@ function Menu() {
                 <label htmlFor="name">Nome</label>
                 <input
                   id="name"
-                  value={name}
-                  onChange={event => setName(event.target.value)}
+                  value={contact}
+                  onChange={event => setContact(event.target.value)}
+                  placeholder="Informe o Apelido do Contato"
                 />
               </div>
               <div className="input-block">
@@ -150,6 +169,7 @@ function Menu() {
                   id="number"
                   value={number}
                   onChange={event => setNumber(event.target.value)}
+                  placeholder="55XX9XXXXXXXX"
                 />
               </div>
             </fieldset>
